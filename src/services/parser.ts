@@ -47,6 +47,9 @@ const MODEL_PRICING: Record<string, { input: number; output: number; cacheRead: 
   'claude-3-haiku-20240307': { input: 0.25, output: 1.25, cacheRead: 0.025 },
   // Older Opus (4.0/4.1)
   'claude-opus-4-20250514': { input: 15, output: 75, cacheRead: 1.5 },
+  // Claude 4.6
+  'claude-opus-4-6-20260401': { input: 5, output: 25, cacheRead: 0.5 },
+  'claude-sonnet-4-6-20260401': { input: 3, output: 15, cacheRead: 0.3 },
   default: { input: 3, output: 15, cacheRead: 0.3 },
 };
 
