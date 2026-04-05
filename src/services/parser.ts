@@ -26,17 +26,26 @@ const HISTORY_PATH = join(CLAUDE_DIR, 'history.jsonl');
 const PLANS_DIR = join(CLAUDE_DIR, 'plans');
 const TODOS_DIR = join(CLAUDE_DIR, 'todos');
 
-// Model pricing (USD per 1M tokens) - https://docs.claude.com/en/docs/about-claude/pricing
-// Updated December 2025
+// Model pricing (USD per 1M tokens) - https://platform.claude.com/docs/en/about-claude/pricing
+// Updated April 2026
 const MODEL_PRICING: Record<string, { input: number; output: number; cacheRead: number }> = {
-  // Opus 4.5 (Nov 2025) - New lower pricing
+  // Claude 4.6
+  'claude-opus-4-6': { input: 5, output: 25, cacheRead: 0.5 },
+  'claude-sonnet-4-6': { input: 3, output: 15, cacheRead: 0.3 },
+  // Claude 4.5
+  'claude-opus-4-5': { input: 5, output: 25, cacheRead: 0.5 },
   'claude-opus-4-5-20251101': { input: 5, output: 25, cacheRead: 0.5 },
-  // Sonnet 4.5
+  'claude-sonnet-4-5': { input: 3, output: 15, cacheRead: 0.3 },
   'claude-sonnet-4-5-20250929': { input: 3, output: 15, cacheRead: 0.3 },
-  // Sonnet 4
-  'claude-sonnet-4-20250514': { input: 3, output: 15, cacheRead: 0.3 },
-  // Haiku 4.5
+  'claude-haiku-4-5': { input: 1, output: 5, cacheRead: 0.1 },
   'claude-haiku-4-5-20251001': { input: 1, output: 5, cacheRead: 0.1 },
+  // Claude 4.0/4.1
+  'claude-opus-4-1': { input: 15, output: 75, cacheRead: 1.5 },
+  'claude-opus-4-1-20250805': { input: 15, output: 75, cacheRead: 1.5 },
+  'claude-opus-4-0': { input: 15, output: 75, cacheRead: 1.5 },
+  'claude-opus-4-20250514': { input: 15, output: 75, cacheRead: 1.5 },
+  'claude-sonnet-4-0': { input: 3, output: 15, cacheRead: 0.3 },
+  'claude-sonnet-4-20250514': { input: 3, output: 15, cacheRead: 0.3 },
   // Claude 3.5
   'claude-3-5-sonnet-20241022': { input: 3, output: 15, cacheRead: 0.3 },
   'claude-3-5-sonnet-20240620': { input: 3, output: 15, cacheRead: 0.3 },
@@ -45,11 +54,6 @@ const MODEL_PRICING: Record<string, { input: number; output: number; cacheRead: 
   'claude-3-opus-20240229': { input: 15, output: 75, cacheRead: 1.5 },
   'claude-3-sonnet-20240229': { input: 3, output: 15, cacheRead: 0.3 },
   'claude-3-haiku-20240307': { input: 0.25, output: 1.25, cacheRead: 0.025 },
-  // Older Opus (4.0/4.1)
-  'claude-opus-4-20250514': { input: 15, output: 75, cacheRead: 1.5 },
-  // Claude 4.6
-  'claude-opus-4-6-20260401': { input: 5, output: 25, cacheRead: 0.5 },
-  'claude-sonnet-4-6-20260401': { input: 3, output: 15, cacheRead: 0.3 },
   default: { input: 3, output: 15, cacheRead: 0.3 },
 };
 
