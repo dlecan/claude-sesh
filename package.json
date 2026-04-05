@@ -41,6 +41,7 @@
     "./parser": "./dist/services/parser.js"
   },
   "scripts": {
+    "prepare": "tsc",
     "build": "tsc",
     "dev": "tsc --watch",
     "start": "node dist/cli.js",
